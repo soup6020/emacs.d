@@ -5,8 +5,12 @@
 (tool-bar-mode -1) ; Hide the outdated icons
 (menu-bar-mode -1) ; Disable menubar
 (scroll-bar-mode -1) ; Remove scrollbar
+(tab-bar-mode 1) ; Always show tab bar
 (setq inhibit-splash-screen t) ; Remove GNU splash
 (setq use-file-dialog nil) ; Text-mode confirmations instead of dialog boxes
+;; Enable mouse in terminals
+(unless (display-graphic-p)
+  (xterm-mouse-mode 1))
 
 ;; Set up elpaca
 (defvar elpaca-installer-version 0.11)
@@ -102,13 +106,20 @@
   
   )
 
+(use-package no-littering
+  :ensure t
+  :demand t
+)
 
-;; Kanagawa theme
+;; Install themes
 (use-package kanagawa-themes
   :ensure t
   :demand t
   :config
 (unless (display-graphic-p) (load-theme 'kanagawa-wave t)))
+(use-package ef-themes
+  :ensure t
+  )
 (use-package doom-themes
   :ensure t
   :demand t
@@ -245,6 +256,13 @@
   (leader-keys
     "'" '(vterm-toggle :which-key "terminal")))
 
+;; Kitty keyboard protocol support
+(use-package kkp
+  :ensure t
+  :config
+  ;; (setq kkp-alt-modifier 'alt) ;; use this if you want to map the Alt keyboard modifier to Alt in Emacs (and not to Meta)
+  (global-kkp-mode +1))
+
 (use-package vertico
   :ensure t
   :init
@@ -291,7 +309,7 @@
    )
   :config
   (dirvish-peek-mode)             ; Preview files in minibuffer
-  ;; (dirvish-side-follow-mode)      ; similar to `treemacs-follow-mode'
+  (dirvish-side-follow-mode)      ; similar to `treemacs-follow-mode'
   (setq dirvish-mode-line-format
         '(:left (sort symlink) :right (omit yank index)))
   (setq dirvish-attributes           ; The order *MATTERS* for some attributes
@@ -376,6 +394,7 @@
   (treemacs-load-theme "nerd-icons"))
 
 ;; Language setup
+;; LSPs
 (use-package eglot
   :ensure t
   :demand t)
@@ -383,6 +402,11 @@
     :ensure (:host github :repo "jdtsmith/eglot-booster")
     :after eglot
     :config (eglot-booster-mode))
+;; Treesitter
+(use-package treesit-auto
+  :ensure t
+  :config
+  (global-treesit-auto-mode))
 ;; Nix
 (use-package nix-mode
     :ensure t
@@ -416,6 +440,10 @@
 ;; Lisp
   (use-package sly
     :ensure t)
+(use-package elisp-autofmt
+  :ensure t
+  :commands (elisp-autofmt-mode elisp-autofmt-buffer)
+  :hook (emacs-lisp-mode . elisp-autofmt-mode))
 
 ;; org stuff
   (use-package org
@@ -445,3 +473,23 @@
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys)
     (setq evil-want-C-i-jump nil))
+(use-package org-roam
+  :ensure t
+  :after org
+  )
+
+
+;; Make TRAMP go brrr
+(setq remote-file-name-inhibit-locks t
+      tramp-use-scp-direct-remote-copying t
+      remote-file-name-inhibit-auto-save-visited t)
+(connection-local-set-profile-variables
+ 'remote-direct-async-process
+ '((tramp-direct-async-process . t)))
+(connection-local-set-profiles
+ '(:application tramp :protocol "scp")
+ 'remote-direct-async-process)
+(remove-hook 'evil-insert-state-exit-hook #'doom-modeline-update-buffer-file-name)
+(remove-hook 'find-file-hook #'doom-modeline-update-buffer-file-name)
+(remove-hook 'find-file-hook 'forge-bug-reference-setup)
+(setq magit-tramp-pipe-stty-settings 'pty)
