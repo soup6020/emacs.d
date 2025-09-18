@@ -119,6 +119,15 @@
 
  (defalias 'yes-or-no-p 'y-or-n-p)
 
+ ;; Hide pesky backup files
+ (setq backup-directory-alist `(("." . "~/.config/emacs/saves")))
+(setq backup-by-copying t)
+(setq delete-old-versions t
+  kept-new-versions 6
+  kept-old-versions 2
+  version-control t)
+
+ ;; UTF-8 always and everywhere
  (set-charset-priority 'unicode)
  (setq
   locale-coding-system 'utf-8
@@ -130,10 +139,16 @@
  (prefer-coding-system 'utf-8)
  (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
 
+ ;; Scroll one line at a time
+ (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+ (setq mouse-wheel-follow-mouse 't)
+ (setq mouse-wheel-progressive-speed nil)
+
  (setq-default indent-tabs-mode nil)
  (setq-default tab-width 2)
  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+ ;; Cosmetics
  (set-face-attribute 'default nil
                      :font "ZedMono Nerd Font Mono"
                      :height 120)
@@ -171,7 +186,8 @@
  (doom-themes-enable-italic t) ; if nil, italics is universally disabled
  ;; for treemacs users
  (doom-themes-treemacs-theme "doom-colors") ; use "doom-colors" for less minimal icon theme
- :config (load-theme 'doom-moonlight t)
+ :config
+ (load-theme 'doom-moonlight t)
 
  ;; Enable flashing mode-line on errors
  (doom-themes-visual-bell-config)
@@ -210,6 +226,14 @@
  :ensure t
  :demand t
  :init (doom-modeline-mode 1))
+
+;; Minions
+(use-package
+  minions
+  :ensure t
+  :demand t
+  :config (minions-mode 1)
+  )
 
 (use-package
  which-key
@@ -327,6 +351,13 @@
 (use-package savehist :ensure nil :init (savehist-mode 1))
 
 (use-package marginalia :ensure t :init (marginalia-mode 1))
+
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles partial-completion))))
+  (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
 
 ;; Dirvish
 (use-package
@@ -456,6 +487,7 @@
 (use-package
  treesit-auto
  :ensure t
+ :demand t
  :config (global-treesit-auto-mode))
 ;; Nix
 (use-package
