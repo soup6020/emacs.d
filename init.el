@@ -85,6 +85,7 @@
 (use-package no-littering :ensure t :demand t)
 
 ;;; Load some packages
+;;; Inspired by purcell's config
 
 ;; Cosmetics
 (require 'init-themes)
@@ -107,4 +108,5 @@
 (require 'init-dirvish)
 (require 'init-magit)
 (require 'init-tramp)
-
+;; Dashboard
+(require 'init-dashboard)
