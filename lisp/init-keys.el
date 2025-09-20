@@ -30,14 +30,10 @@
       (interactive)
       (find-file user-init-file))
     :which-key "open init file")
-
-  ;; Buffer
   "b"
-  '(:ignore t :which-key "buffer")
-  ;; Don't show an error because SPC b ESC is undefined, just abort
-  "b <escape>"
-  '(keyboard-escape-quit :which-key t)
-  "bd"
-  'kill-current-buffer))
+  '(consult-buffer :which-key "switch buffer")
+  "t"
+  '(consult-theme :which-key "change theme")
+  ))
 
 (provide 'init-keys)

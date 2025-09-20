@@ -10,7 +10,7 @@
 (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
 
 ;; Set the title
-(setq dashboard-banner-logo-title "Ezmacs")
+(setq dashboard-banner-logo-title "Emacs-pgtk on NixOS Unstable")
 ;; Icons
 (setq dashboard-display-icons-p t)     ; display icons on both GUI and terminal
 (setq dashboard-icon-type 'nerd-icons) ; use `nerd-icons' package

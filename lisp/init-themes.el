@@ -7,9 +7,14 @@
  :ensure t
  :demand t
  :config
- (unless (display-graphic-p)
-   (load-theme 'kanagawa-wave t)))
-(use-package ef-themes :ensure t)
+;; (unless (display-graphic-p)
+ ;;   (load-theme 'kanagawa-wave t))
+ )
+(use-package
+  ef-themes
+  :ensure t
+  :config
+  )
 (use-package
  doom-themes
  :ensure t

@@ -9,13 +9,13 @@
 (setq inhibit-splash-screen t) ; Remove GNU splash
 (setq use-file-dialog nil) ; Text-mode confirmations instead of dialog boxes
 ;; Enable mouse in terminals
-(unless (display-graphic-p)
+(unless (window-system)
   (xterm-mouse-mode 1))
 
-;; ./lisp userdir
+;; ./lisp userdir - required for elpaca
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-;; Immediately load elpaca
+;; Immediately load elpaca and use-package
 (require 'init-elpaca)
 
 ;; Misc emacs options, mostly self explanatory
@@ -36,7 +36,7 @@
  (defalias 'yes-or-no-p 'y-or-n-p)
 
  ;; Hide pesky backup files
- (setq backup-directory-alist `(("." . "~/.config/emacs/saves")))
+(setq backup-directory-alist `(("." . "~/.config/emacs/saves")))
 (setq backup-by-copying t)
 (setq delete-old-versions t
   kept-new-versions 6

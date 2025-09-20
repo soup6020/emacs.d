@@ -9,10 +9,6 @@
   "SPC"
   '(projectile-find-file :which-key "find file")
 
-  ;; Buffers
-  "b b"
-  '(projectile-switch-to-buffer :which-key "switch buffer")
-
   ;; Projects
   "p"
   '(:ignore t :which-key "projects")
