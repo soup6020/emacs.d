@@ -12,7 +12,7 @@
 (unless (window-system)
   (xterm-mouse-mode 1))
 
-;; ./lisp userdir - required for elpaca
+;; lisp userdir - required for elpaca
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Immediately load elpaca and use-package
@@ -36,7 +36,14 @@
  (defalias 'yes-or-no-p 'y-or-n-p)
 
  ;; Hide pesky backup files
-(setq backup-directory-alist `(("." . "~/.config/emacs/saves")))
+ (setq backup-directory-alist `(("." . "~/.config/emacs/backups")))
+ (setq auto-save-file-name-transforms
+       `((".*" "~/.config/emacs/saves/" t)))
+ (unless (file-exists-p "~/.config/emacs/backups")
+   (make-directory "~/.config/emacs/backups"))
+(unless (file-exists-p "~/.config/emacs/saves")
+  (make-directory "~/.config/emacs/saves"))
+ 
 (setq backup-by-copying t)
 (setq delete-old-versions t
   kept-new-versions 6
@@ -72,7 +79,10 @@
  (add-to-list 'default-frame-alist '(ns-appearance . light))
  (setq ns-use-proxy-icon nil)
  (setq frame-title-format nil)
+ 
+ ;; Line numbers by default in programming modes
  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+ ;; F7 to toggle line number display globally
  (defun prot/toggle-line-numbers ()
    "Toggles the display of line numbers.  Applies to all buffers."
    (interactive)

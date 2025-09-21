@@ -14,16 +14,6 @@
  :config
  (add-to-list 'eglot-server-programs '(nix-mode . ("nixd"))))
 
-;; Wedge nix-ts here for now, evaluate later
-;; NOTE: this hook configuration works, change the rest
-;; NOTE 2: Set up more ts-modes, maybe in treesit.el? Or split langs out into modules.
-(use-package nix-ts-mode
-  :ensure t
-  :mode "\\.nix\\'"
-  :config
-  (add-to-list 'eglot-server-programs '(nix-mode . ("nixd")))
-  (add-hook 'nix-ts-mode-hook 'eglot-ensure))
-
 ;; Markdown
 (use-package
  markdown-mode
@@ -44,7 +34,11 @@
  :ensure t
  :after eglot
  :hook (rust-mode . eglot-ensure)
- :config (add-to-list 'eglot-server-programs '(rust-mode . ("rust-analyzer"))))
+ :config (add-to-list 'eglot-server-programs
+                       `(rust-mode . ("rust-analyzer" :initializationOptions
+                                     ( :procMacro (:enable t)
+                                       :cargo ( :buildScripts (:enable t)
+                                                :features "all"))))))
 
 ;; YAML
 (use-package
@@ -52,6 +46,7 @@
  :ensure t
  :after eglot
  :hook (yaml-mode . eglot-ensure)
- :config (add-to-list 'eglot-server-programs '(yaml-mode . ("yaml-language-server"))))
+ :config (add-to-list 'eglot-server-programs '(yaml-mode . ("yaml-language-server")))
+(add-hook 'yaml-mode-hook 'eglot-ensure))
 
 (provide 'init-eglot)

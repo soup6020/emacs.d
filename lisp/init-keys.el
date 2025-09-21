@@ -34,6 +34,8 @@
   '(consult-buffer :which-key "switch buffer")
   "t"
   '(consult-theme :which-key "change theme")
+  "m"
+  '(consult-bookmark :which-key "bookmarks menu")
   ))
 
 (provide 'init-keys)
