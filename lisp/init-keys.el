@@ -36,6 +36,8 @@
   '(consult-theme :which-key "change theme")
   "m"
   '(consult-bookmark :which-key "bookmarks menu")
+  "."
+  '(embark-act :which-key "embark-act")
   ))
 
 (provide 'init-keys)

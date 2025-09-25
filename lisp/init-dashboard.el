@@ -7,8 +7,6 @@
   (add-hook 'elpaca-after-init-hook #'dashboard-initialize)
   (dashboard-setup-startup-hook))
 
-(setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
-
 ;; Set the title
 (setq dashboard-banner-logo-title "Emacs-pgtk on NixOS Unstable")
 ;; Icons
@@ -42,7 +40,7 @@
 (setq dashboard-show-shortcuts nil)
 
 (setq dashboard-items '((recents   . 5)
-                        (bookmarks . 5)
+                        (bookmarks . 10)
                         (projects  . 5)
                         (agenda    . 5)))
 

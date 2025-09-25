@@ -12,6 +12,12 @@
 (unless (window-system)
   (xterm-mouse-mode 1))
 
+;; Enable right click context menu in all relevant modes
+(add-hook 'text-mode-hook 'context-menu-mode)
+(add-hook 'prog-mode-hook 'context-menu-mode)
+(add-hook 'shell-mode-hook 'context-menu-mode)
+(add-hook 'dired-mode-hook 'context-menu-mode)
+
 ;; lisp userdir - required for elpaca
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -105,6 +111,7 @@
 ;; Function
 (require 'init-modeline)
 (require 'init-completion)
+(require 'init-embark)
 (require 'init-org)
 ;; Language support
 (require 'init-eglot)

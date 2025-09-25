@@ -1,0 +1,5 @@
+This isn't much at the moment, but it works.
+You can use it like this:
+#+BEGIN_SRC bash
+git clone https://github.com/soup6020/emacs.d ~/.config/emacs
+#+END_SRC

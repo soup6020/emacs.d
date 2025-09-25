@@ -2,6 +2,7 @@
 (use-package
  org
  :ensure (:wait t)
+ :demand t
  :config
  ;; Exclude the daily tag from inheritance so that archived tasks don't appear with this tag in my agenda
  (add-to-list 'org-tags-exclude-from-inheritance "daily")
@@ -12,6 +13,7 @@
 (use-package
  evil-org
  :ensure t
+ :demand t
  :after org
  :hook (org-mode . (lambda () evil-org-mode))
  :config
