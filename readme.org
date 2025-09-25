@@ -3,3 +3,10 @@ You can use it like this:
 #+BEGIN_SRC bash
 git clone https://github.com/soup6020/emacs.d ~/.config/emacs
 #+END_SRC
+* Notable Packages:
++ Elpaca: Package manager
++ Vertico/Marginalia/Orderless: Completions
++ Consult/Embark: Supplementary commands and menus
++ evil-mode: Vi emulation
++ Eglot: LSP mode
++ org-mode/org-modern/org-roam: org-mode ecosystem stuff
