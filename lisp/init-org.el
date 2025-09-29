@@ -66,5 +66,9 @@
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 
+;; Make newline in a list under org act like google docs
+(use-package org-autolist
+  :ensure t
+  :hook (org-mode . org-autolist-mode))
 
 (provide 'init-org)

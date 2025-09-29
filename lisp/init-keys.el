@@ -3,7 +3,7 @@
  :ensure t
  :demand t
  :init
- (setq which-key-idle-delay 0.5) ; Open after .5s instead of 1s
+ (setq which-key-idle-delay 0.1) ; Open after .1s instead of 1s
  :config (which-key-mode))
 
 (use-package
@@ -21,8 +21,9 @@
   :global-prefix "C-SPC")
 
  (leader-keys
-  "x"
-  '(execute-extended-command :which-key "execute command")
+  ;; This is just M-x reboud, probably useless
+  ;;"x"
+  ;;'(execute-extended-command :which-key "execute command")
   "r"
   '(restart-emacs :which-key "restart emacs")
   "i"
@@ -38,6 +39,23 @@
   '(consult-bookmark :which-key "bookmarks menu")
   "."
   '(embark-act :which-key "embark-act")
+  ;; Org
+  "o"
+  '(:ignore t :which-key "org menu")
+  ;; Don't show an error because SPC o ESC is undefined, just abort
+  "o <escape>" '(keyboard-escape-quit :which-key t)
+  "ot"
+  '(org-todo :which-key "change state of TODO item")
+  "os"
+  '(org-schedule :which-key "open schedule picker")
+  "od"
+  '(org-deadline :which-key "set task deadline")
+  "oo"
+  '(org-overview :which-key "overview mode")
+  "op"
+  '(org-priority :which-key "change item priority")
+  "oc"
+  '(org-cycle-global :which-key "cycle global visibility")
   ))
 
 (provide 'init-keys)
