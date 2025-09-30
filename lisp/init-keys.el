@@ -31,14 +31,26 @@
       (interactive)
       (find-file user-init-file))
     :which-key "open init file")
-  "b"
-  '(consult-buffer :which-key "switch buffer")
   "t"
   '(consult-theme :which-key "change theme")
   "m"
   '(consult-bookmark :which-key "bookmarks menu")
+  ;; This should probably be something else, so it's usable in minibuffers like consult-buffer
   "."
   '(embark-act :which-key "embark-act")
+
+  ;; Buffer menu
+  "b"
+  '(:ignore t :which-key "buffer menu")
+  "b <escape>"
+  '(keyboard-escape-quit :which-key t)
+  "bb"
+  '(consult-buffer :which-key "consult-buffer")
+  "bk"
+  '(kill-buffer :which-key "kill-buffer")
+  "bi"
+  '(ibuffer :which-key "ibuffer")
+
   ;; Org
   "o"
   '(:ignore t :which-key "org menu")
