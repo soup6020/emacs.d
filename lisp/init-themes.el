@@ -13,7 +13,9 @@
 (use-package
   ef-themes
   :ensure t
+  :demand t
   :config
+ ;; (load-theme 'ef-bio t)
   )
 (use-package kaolin-themes
   :ensure t
@@ -32,7 +34,7 @@
  ;; for treemacs users
  (doom-themes-treemacs-theme "doom-colors") ; use "doom-colors" for less minimal icon theme
  :config
- (load-theme 'doom-moonlight t)
+ (load-theme 'doom-outrun-electric t)
 
  ;; Enable flashing mode-line on errors
  (doom-themes-visual-bell-config)

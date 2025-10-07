@@ -1,4 +1,5 @@
-This isn't much at the moment, but it works.
+I'm a recent Neovim convert, this is my Emacs config.
+There isn't much at the moment, but the config works
 You can use it like this:
 #+BEGIN_SRC bash
 git clone https://github.com/soup6020/emacs.d ~/.config/emacs

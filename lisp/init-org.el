@@ -9,6 +9,7 @@
  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
  (setq org-hide-leading-stars t)
  (setq org-hide-emphasis-markers t))
+ (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "DONE")))
 
 (use-package
  evil-org
