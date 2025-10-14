@@ -85,6 +85,15 @@
  (add-to-list 'default-frame-alist '(ns-appearance . light))
  (setq ns-use-proxy-icon nil)
  (setq frame-title-format nil)
+
+ ;; Enhanced world clock
+ (setq world-clock-list
+       '(("America/Vancouver" "Vancouver")
+        ("America/Edmonton" "Edmonton")
+        ("Europe/Paris" "France")
+        ("Asia/Kolkata" "India")
+        ("Asia/Tokyo" "Japan")))
+
  
  ;; Line numbers by default in programming modes
  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
