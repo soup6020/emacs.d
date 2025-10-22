@@ -68,6 +68,12 @@
   '(org-priority :which-key "change item priority")
   "oc"
   '(org-cycle-global :which-key "cycle global visibility")
-  ))
+  "a"
+  '(:ignore t :which-key "agenda")
+  "ao"
+  '(org-agenda :which-key "open org-agenda")
+  "aa"
+ '(consult-org-agenda :which-key "consult agenda picker")
+ ))
 
 (provide 'init-keys)

@@ -25,8 +25,9 @@
 (require 'init-elpaca)
 
 ;; Misc emacs options, mostly self explanatory
-(use-package
- emacs
+(use-package emacs
+ ;; Revert the GC hack from early-init.el to minimize startup time
+ :hook (emacs-startup . (lambda () (setq gc-cons-threshold (* 8 1024 1024))))
  :custom
  (tab-always-indent 'complete)
  (completion-cycle-threshold 3)

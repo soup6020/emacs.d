@@ -10,6 +10,7 @@
 (use-package
  nix-mode
  :ensure t
+ :defer t
  :hook (nix-mode . eglot-ensure)
  :mode "\\.nix\\'"
  :config
@@ -20,12 +21,14 @@
 (use-package
  markdown-mode
  :ensure t
+ :defer t
  :config (setq markdown-fontify-code-blocks-natively t))
 
 ;; Python
 (use-package
  python-mode
  :ensure t
+ :defer t
  :after eglot
  :config (add-to-list 'eglot-server-programs '(python-mode . ("basedpyright")))
 (add-hook 'python-mode-hook 'eglot-ensure))
@@ -34,6 +37,7 @@
 (use-package
  rust-mode
  :ensure t
+ :defer t
  :after eglot
  :hook (rust-mode . eglot-ensure)
  :config (add-to-list 'eglot-server-programs
@@ -46,6 +50,7 @@
 (use-package
  yaml-mode
  :ensure t
+ :defer t
  :after eglot
  :hook (yaml-mode . eglot-ensure)
  :config (add-to-list 'eglot-server-programs '(yaml-mode . ("yaml-language-server")))

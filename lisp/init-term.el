@@ -2,6 +2,7 @@
 (use-package
  vterm-toggle
  :ensure t
+ :defer t
  :general (leader-keys "'" '(vterm-toggle :which-key "terminal")))
 
 ;; Kitty keyboard protocol support
