@@ -92,6 +92,7 @@
         ("America/Edmonton" "Edmonton")
         ("Europe/Paris" "France")
         ("Asia/Kolkata" "India")
+        ("America/Detroit" "North Carolina")
         ("Asia/Tokyo" "Japan")))
 
  

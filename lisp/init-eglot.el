@@ -11,7 +11,9 @@
  nix-mode
  :ensure t
  :hook (nix-mode . eglot-ensure)
+ :mode "\\.nix\\'"
  :config
+ (require 'nix-format)
  (add-to-list 'eglot-server-programs '(nix-mode . ("nixd"))))
 
 ;; Markdown

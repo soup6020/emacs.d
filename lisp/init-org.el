@@ -6,9 +6,15 @@
  :config
  ;; Exclude the daily tag from inheritance so that archived tasks don't appear with this tag in my agenda
  (add-to-list 'org-tags-exclude-from-inheritance "daily")
+ ;; Make all .org files load org-mode
  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+ ;; Cosmetic changes
  (setq org-hide-leading-stars t)
  (setq org-hide-emphasis-markers t))
+ ;; Global org directory
+ (setq org-directory "~/org")
+ ;; Agenda directory - org reads TODO entries from this directory for the global agenda
+ (setq org-agenda-files '("~/org/todo"))
  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "DONE")))
 
 (use-package
@@ -50,6 +56,7 @@
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
   (org-roam-db-autosync-mode))
   
+  ;; org-roam-ui dependency
   (use-package websocket
     :ensure t
     :after org-roam)
