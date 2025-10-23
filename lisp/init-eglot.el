@@ -1,14 +1,14 @@
-(use-package eglot :ensure t :demand t)
+(use-package eglot
+  :ensure t
+  :demand t)
 
-(use-package
- eglot-booster
+(use-package eglot-booster
  :ensure (:host github :repo "jdtsmith/eglot-booster")
  :after eglot
  :config (eglot-booster-mode))
 
 ;; Nix
-(use-package
- nix-mode
+(use-package nix-mode
  :ensure t
  :defer t
  :hook
@@ -20,15 +20,13 @@
  (add-to-list 'eglot-server-programs '(nix-mode . ("nixd"))))
 
 ;; Markdown
-(use-package
- markdown-mode
+(use-package markdown-mode
  :ensure t
  :defer t
  :config (setq markdown-fontify-code-blocks-natively t))
 
 ;; Python
-(use-package
- python-mode
+(use-package python-mode
  :ensure t
  :defer t
  :after eglot
@@ -36,8 +34,7 @@
 (add-hook 'python-mode-hook 'eglot-ensure))
 
 ;; Rust
-(use-package
- rust-mode
+(use-package rust-mode
  :ensure t
  :defer t
  :after eglot

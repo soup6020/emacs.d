@@ -1,17 +1,22 @@
 ;; TODO: Am I even using this? It's for counsel. Vertico/orderless/consult is a full replacement for ivy and counsel.
 ;; (use-package ivy :ensure t :config (ivy-mode))
 
-(use-package
- vertico
+(use-package vertico
  :ensure t
  :init (vertico-mode 1)
  :config (setq vertico-count 25))
 
-(use-package corfu :ensure t :init (global-corfu-mode))
+(use-package corfu
+  :ensure t
+  :init (global-corfu-mode))
 
 ;; Not strictly completion, but complementary
-(use-package savehist :ensure nil :init (savehist-mode 1))
-(use-package marginalia :ensure t :init (marginalia-mode 1))
+(use-package savehist
+  :ensure nil
+  :init (savehist-mode 1))
+(use-package marginalia
+  :ensure t
+  :init (marginalia-mode 1))
 
 (use-package consult
   :ensure t

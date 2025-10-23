@@ -1,6 +1,5 @@
 ;; org stuff
-(use-package
- org
+(use-package org
  :ensure (:wait t)
  :demand t
  :config
@@ -17,8 +16,7 @@
  (setq org-agenda-files '("~/org/todo"))
  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "DONE")))
 
-(use-package
- evil-org
+(use-package evil-org
  :ensure t
  :demand t
  :after org
@@ -28,8 +26,7 @@
  (evil-org-agenda-set-keys)
  (setq evil-want-C-i-jump nil))
 
-(use-package
- org-modern
+(use-package org-modern
  :ensure t
  :init (global-org-modern-mode)
  :custom

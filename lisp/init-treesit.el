@@ -1,6 +1,5 @@
 ;; Treesitter
-(use-package
- treesit-auto
+(use-package treesit-auto
  :ensure t
  :demand t
  :config (global-treesit-auto-mode))

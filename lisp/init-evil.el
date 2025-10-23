@@ -1,6 +1,5 @@
 ;; Evil mode
-(use-package
- evil
+(use-package evil
  :ensure t
  :demand t ; No lazy loading
  :init
@@ -9,12 +8,10 @@
  (setq evil-undo-system 'undo-fu)
  :config (evil-mode 1))
 
-(use-package
-  undo-fu
+(use-package undo-fu
   :ensure t)
 
-(use-package
- evil-collection
+(use-package evil-collection
  :after evil
  :ensure t
  :demand t

@@ -1,17 +1,16 @@
 ;; Install themes
 
-(use-package nerd-icons :ensure t)
+(use-package nerd-icons
+  :ensure t)
 
-(use-package
- kanagawa-themes
+(use-package kanagawa-themes
  :ensure t
  :demand t
  :config
 ;; (unless (display-graphic-p)
  ;;   (load-theme 'kanagawa-wave t))
  )
-(use-package
-  ef-themes
+(use-package ef-themes
   :ensure t
   :demand t
   :config
@@ -23,8 +22,7 @@
   ;;(load-theme 'kaolin-dark t)
   ;;(kaolin-treemacs-theme)
   )
-(use-package
- doom-themes
+(use-package doom-themes
  :ensure t
  :demand t
  :custom

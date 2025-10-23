@@ -1,7 +1,6 @@
 (use-package transient :ensure t)
 
-(use-package
-  magit
+(use-package magit
  :defer t
  :general
  (leader-keys

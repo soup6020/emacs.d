@@ -1,20 +1,17 @@
-(use-package
- which-key
+(use-package which-key
  :ensure t
  :demand t
  :init
  (setq which-key-idle-delay 0.1) ; Open after .1s instead of 1s
  :config (which-key-mode))
 
-(use-package
- general
+(use-package general
  ; Must wait otherwise the :general keyword is not available
  :ensure (:wait t)
  :demand
  :config (general-evil-setup)
 
- (general-create-definer
-  leader-keys
+ (general-create-definer leader-keys
   :states '(normal insert visual emacs)
   :keymaps 'override
   :prefix "SPC"

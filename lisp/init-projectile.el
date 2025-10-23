@@ -1,5 +1,4 @@
-(use-package
- projectile
+(use-package projectile
  :ensure t
  :demand t
  :general
