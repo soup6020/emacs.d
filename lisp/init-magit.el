@@ -21,6 +21,8 @@
   '(magit-pull :which-key "pull")
   "g o"
   '(magit-push :which-key "push")
+  "g f"
+  '(with-editor-finish :which-key "finish editing message")
   )
  (general-nmap "<escape>" #'transient-quit-one))
 

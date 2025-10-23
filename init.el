@@ -5,7 +5,7 @@
 (tool-bar-mode -1) ; Hide the outdated icons
 (menu-bar-mode -1) ; Disable menubar
 (scroll-bar-mode -1) ; Remove scrollbar
-(tab-bar-mode 1) ; Always show tab bar
+(tab-bar-mode 1) ; Always show tab bar, disabled in favour of centaur-tabs
 (setq inhibit-splash-screen t) ; Remove GNU splash
 (setq use-file-dialog nil) ; Text-mode confirmations instead of dialog boxes
 ;; Enable mouse in terminals
@@ -89,13 +89,17 @@
 
  ;; Enhanced world clock
  (setq world-clock-list
-       '(("America/Vancouver" "Vancouver")
-        ("America/Edmonton" "Edmonton")
+       '(("America/Vancouver" "Pacific Time")
+        ("America/Edmonton" "Mountain Time")
+        ("America/Detroit" "Eastern Time")
         ("Europe/Paris" "France")
         ("Asia/Kolkata" "India")
-        ("America/Detroit" "North Carolina")
         ("Asia/Tokyo" "Japan")))
 
+ ;; Massively increase undo limits (default is 0.15mb)
+(setq undo-limit 67108864) ; 64mb.
+(setq undo-strong-limit 100663296) ; 96mb.
+(setq undo-outer-limit 1006632960) ; 960mb.
  
  ;; Line numbers by default in programming modes
  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
@@ -121,6 +125,8 @@
 (require 'init-keys)
 ;; Function
 (require 'init-modeline)
+;; Turned off for now because it does weird things
+;;(require 'init-tabline)
 (require 'init-completion)
 (require 'init-embark)
 (require 'init-org)

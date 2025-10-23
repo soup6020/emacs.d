@@ -21,9 +21,7 @@
   :global-prefix "C-SPC")
 
  (leader-keys
-  ;; This is just M-x reboud, probably useless
-  ;;"x"
-  ;;'(execute-extended-command :which-key "execute command")
+ ;; Top level keybinds
   "r"
   '(restart-emacs :which-key "restart emacs")
   "i"
@@ -68,12 +66,24 @@
   '(org-priority :which-key "change item priority")
   "oc"
   '(org-cycle-global :which-key "cycle global visibility")
+
+  ;; org-agenda
   "a"
   '(:ignore t :which-key "agenda")
   "ao"
   '(org-agenda :which-key "open org-agenda")
   "aa"
  '(consult-org-agenda :which-key "consult agenda picker")
+
+ ;; Window commmands
+ "w"
+ '(:ignore t :which-key "window commands")
+ "wh"
+ '(split-window-horizontally :which-key "horizontal split")
+ "wv"
+ '(split-window-vertically :which-key "vertical split")
+ "wt"
+ '(tab-new :which-key "new tab")
  ))
 
 (provide 'init-keys)
