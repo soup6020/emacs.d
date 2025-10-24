@@ -8,8 +8,17 @@
  (setq evil-undo-system 'undo-fu)
  :config (evil-mode 1))
 
+;; TODO: Move this somewhere more fitting, undo is not explicitly an evil thing
 (use-package undo-fu
   :ensure t)
+
+(use-package vundo
+  :ensure t
+  :commands (vundo)
+  :hook (prog-mode . vundo-popup-mode)
+  :config
+  (setq vundo-glyph-alist vundo-unicode-symbols)
+  )
 
 (use-package evil-collection
  :after evil

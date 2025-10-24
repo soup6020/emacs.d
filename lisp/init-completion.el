@@ -1,6 +1,3 @@
-;; TODO: Am I even using this? It's for counsel. Vertico/orderless/consult is a full replacement for ivy and counsel.
-;; (use-package ivy :ensure t :config (ivy-mode))
-
 (use-package vertico
  :ensure t
  :init (vertico-mode 1)
