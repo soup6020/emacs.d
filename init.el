@@ -134,6 +134,7 @@
 (require 'init-eglot)
 (require 'init-treesit)
 (require 'init-elisp)
+(require 'init-nushell)
 (require 'init-flymake)
 ;; Applications
 (require 'init-term)
