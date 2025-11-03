@@ -63,6 +63,8 @@
   '(org-priority :which-key "change item priority")
   "oc"
   '(org-cycle-global :which-key "cycle global visibility")
+  "oa"
+  '(org-archive-subtree :which-key "archive selected task")
 
   ;; org-agenda
   "a"

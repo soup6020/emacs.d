@@ -13,7 +13,8 @@
  ;; Global org directory
  (setq org-directory "~/org")
  ;; Agenda directory - org reads TODO entries from this directory for the global agenda
- (setq org-agenda-files '("~/org/todo"))
+(setq org-agenda-files '("~/org/todo"))
+(setq org-archive-location "~/org/archive/agenda-archive.org::* Archived Tasks")
  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "DONE")))
 
 (use-package evil-org
