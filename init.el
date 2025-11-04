@@ -136,6 +136,7 @@
 (require 'init-elisp)
 (require 'init-nushell)
 (require 'init-flymake)
+(require 'init-nginx)
 ;; Applications
 (require 'init-term)
 (require 'init-treemacs)
