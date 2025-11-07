@@ -4,8 +4,7 @@
  :defer t
  :init
  (with-eval-after-load 'winum
-   (define-key winum-keymap (kbd "M-0") #'treemacs-select-window)
-   (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
+   (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
  :config
  (progn
    (setq

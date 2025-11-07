@@ -133,6 +133,7 @@
 ;; Language support
 (require 'init-eglot)
 (require 'init-treesit)
+(require 'init-nix)
 (require 'init-elisp)
 (require 'init-nushell)
 (require 'init-flymake)
