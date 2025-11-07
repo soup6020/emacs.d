@@ -7,6 +7,7 @@
 ;;Nix-ts
 (use-package nix-ts-mode
   :ensure t
+  :after (:all treesit-auto eglot)
   :mode "\\.nix\\'"
   :config
   (add-to-list 'eglot-server-programs '(nix-mode . ("nixd")))

@@ -10,12 +10,14 @@
 ;; Nix
 (use-package nix-mode
  :ensure t
+ :after eglot 
  :defer t
  :hook
   ((nix-mode . eglot-ensure)
    (nix-mode . (lambda ()
                  (add-hook 'before-save-hook #'nix-format-buffer nil t))))
  :mode "\\.nix\\'"
+ :commands nix-format-buffer
  :config
  (add-to-list 'eglot-server-programs '(nix-mode . ("nixd"))))
 

@@ -4,7 +4,8 @@
  :defer t
  :init
  (with-eval-after-load 'winum
-   (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+   (define-key winum-keymap (kbd "M-0") #'treemacs-select-window)
+   (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
  :config
  (progn
    (setq
@@ -29,6 +30,7 @@
   ("C-x t B" . treemacs-bookmark)
   ("C-x t C-t" . treemacs-find-file)
   ("C-x t M-t" . treemacs-find-tag)))
+
 (use-package treemacs-projectile
  :after (treemacs projectile)
  :ensure t)

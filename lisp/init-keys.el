@@ -72,7 +72,17 @@
   "ao"
   '(org-agenda :which-key "open org-agenda")
   "aa"
- '(consult-org-agenda :which-key "consult agenda picker")
+  '(consult-org-agenda :which-key "consult agenda picker")
+
+  ;;Treemacs
+  "k"
+  '(:ignore t :which-key "treemacs")
+  "kk"
+  '(treemacs :which-key "treemacs")
+  "kl"
+  '(treemacs-next-workspace :which-key "switch workspaces")
+  "ke"
+  '(treemacs-edit-workspaces :which-key "edit workspaces")
 
  ;; Window commmands
  "w"
