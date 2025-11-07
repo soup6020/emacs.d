@@ -130,14 +130,20 @@
 (require 'init-completion)
 (require 'init-embark)
 (require 'init-org)
-;; Language support
+;; Language feature support
 (require 'init-eglot)
 (require 'init-treesit)
+(require 'init-flymake)
+;; Languages and major modes
 (require 'init-nix)
+(require 'init-markdown)
 (require 'init-elisp)
 (require 'init-nushell)
-(require 'init-flymake)
+(require 'init-rust)
 (require 'init-nginx)
+(require 'init-python)
+(require 'init-yaml)
+
 ;; Applications
 (require 'init-term)
 (require 'init-treemacs)
