@@ -153,3 +153,5 @@
 (require 'init-tramp)
 ;; Dashboard
 (require 'init-dashboard)
+;; Site functions (custom commands)
+(require 'site-functions)

@@ -73,6 +73,8 @@
   '(org-agenda :which-key "open org-agenda")
   "aa"
   '(consult-org-agenda :which-key "consult agenda picker")
+  "at"
+  '(todo-open-soup6020 :which-key "open irl and it todo files")
 
   ;;Treemacs
   "k"
