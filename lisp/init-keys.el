@@ -66,6 +66,32 @@
   "oa"
   '(org-archive-subtree :which-key "archive selected task")
 
+  ;; org-roam
+  "l"
+  '(:ignore t :which-key "org-roam")
+  "ll"
+  '(org-roam-buffer-toggle :which-key "toggle org-roam buffer")
+  "li"
+  '(org-roam-node-insert :which-key "insert node")
+  "lo"
+  '(org-roam-node-find :which-key "find node")
+  "lp"
+  '(org-roam-capture :which-key "capture")
+  "lg"
+  '(org-roam-graph :which-key "build graph for node")
+  "lt"
+  '(org-roam-dailies-capture-today :which-key "capture daily note")
+
+  ;; org-capture"
+  "z"
+  '(:ignore t :which-key "org-capture")
+  "zq"
+  '(org-capture-kill :which-key "abort capture")
+  "zz"
+  '(org-capture-finalize :which-key "finalize capture")
+  "zr"
+  '(org-capture-refile :which-key "finalize & refile")
+
   ;; org-agenda
   "a"
   '(:ignore t :which-key "agenda")
@@ -90,9 +116,9 @@
  "w"
  '(:ignore t :which-key "window commands")
  "wh"
- '(split-window-horizontally :which-key "horizontal split")
+ '(split-window-horizontally :which-key "left/right split")
  "wv"
- '(split-window-vertically :which-key "vertical split")
+ '(split-window-vertically :which-key "top/bottom split")
  "wt"
  '(tab-new :which-key "new tab")
  ))

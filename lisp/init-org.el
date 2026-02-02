@@ -15,7 +15,9 @@
  ;; Agenda directory - org reads TODO entries from this directory for the global agenda
 (setq org-agenda-files '("~/org/todo"))
 (setq org-archive-location "~/org/archive/agenda-archive.org::* Archived Tasks")
- (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "DONE")))
+(setq org-todo-keywords '(
+  (sequence "TODO" "IN-PROGRESS" "|" "DONE")
+      (sequence "SOMEDAY" "|" "CANCELLED")))
 
 (use-package evil-org
  :ensure t
@@ -41,7 +43,7 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory (file-truename "~/org"))
+  (org-roam-directory (file-truename "~/org/roam"))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n g" . org-roam-graph)
@@ -50,7 +52,7 @@
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today))
   :config
-  ;; If you're using a vertical completion framework, you might want a more informative completion interface
+  ;; If you're using a vertical completion framework, you might want a more informative completion interface such as this
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
   (org-roam-db-autosync-mode))
   

@@ -12,4 +12,9 @@
  ;; (setq kkp-alt-modifier 'alt) ;; use this if you want to map the Alt keyboard modifier to Alt in Emacs (and not to Meta)
  (global-kkp-mode +1))
 
+(use-package eat
+  :ensure t
+  :config
+  (add-hook 'eshell-load-hook #'eat-eshell-mode))
+
 (provide 'init-term)

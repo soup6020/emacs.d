@@ -5,7 +5,7 @@
 (tool-bar-mode -1) ; Hide the outdated icons
 (menu-bar-mode -1) ; Disable menubar
 (scroll-bar-mode -1) ; Remove scrollbar
-(tab-bar-mode 1) ; Always show tab bar, disabled in favour of centaur-tabs
+(tab-bar-mode 1) ; Always show tab bar
 (setq inhibit-splash-screen t) ; Remove GNU splash
 (setq use-file-dialog nil) ; Text-mode confirmations instead of dialog boxes
 ;; Enable mouse in terminals
@@ -86,6 +86,7 @@
  (add-to-list 'default-frame-alist '(ns-appearance . light))
  (setq ns-use-proxy-icon nil)
  (setq frame-title-format nil)
+ (setq tab-bar-new-tab-choice "*scratch*")
 
  ;; Enhanced world clock
  (setq world-clock-list
