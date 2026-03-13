@@ -80,7 +80,8 @@
 
  ;; Cosmetics
  (set-face-attribute 'default nil
-                     :font "ZedMono Nerd Font Mono"
+                     ;; :font "ZedMono Nerd Font Mono"
+                     :font "Lilex Nerd Font Mono"
                      :height 120)
  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
  (add-to-list 'default-frame-alist '(ns-appearance . light))
@@ -152,6 +153,7 @@
 (require 'init-dirvish)
 (require 'init-magit)
 (require 'init-tramp)
+(require 'init-pdf)
 ;; Dashboard
 (require 'init-dashboard)
 ;; Site functions (custom commands)
