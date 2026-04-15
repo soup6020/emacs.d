@@ -18,8 +18,8 @@
   )
 
 (use-package tron-legacy-theme
-  :config
   :ensure t
+  ;;:config
   ;;(load-theme 'tron-legacy t)
   )
 

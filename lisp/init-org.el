@@ -9,21 +9,20 @@
  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
  ;; Cosmetic changes
  (setq org-hide-leading-stars t)
- (setq org-hide-emphasis-markers t))
+ (setq org-hide-emphasis-markers t)
  ;; Global org directory
  (setq org-directory "~/org")
  ;; Agenda directory - org reads TODO entries from this directory for the global agenda
-(setq org-agenda-files '("~/org/todo"))
-(setq org-archive-location "~/org/archive/agenda-archive.org::* Archived Tasks")
-(setq org-todo-keywords '(
-  (sequence "TODO" "IN-PROGRESS" "|" "DONE")
-      (sequence "SOMEDAY" "|" "CANCELLED")))
+ (setq org-agenda-files '("~/org/todo"))
+ (setq org-archive-location "~/org/archive/agenda-archive.org::* Archived Tasks")
+ (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "|" "DONE")
+                           (sequence "SOMEDAY" "|" "CANCELLED"))))
 
 (use-package evil-org
  :ensure t
  :demand t
  :after org
- :hook (org-mode . (lambda () evil-org-mode))
+ :hook (org-mode . evil-org-mode)
  :config
  (require 'evil-org-agenda)
  (evil-org-agenda-set-keys)
@@ -35,6 +34,7 @@
  :custom
  (org-modern-star nil)
  (org-modern-block-fringe nil)
+ :config
  (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
  :hook
  (org-mode . org-indent-mode)

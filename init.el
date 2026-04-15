@@ -19,15 +19,19 @@
 (add-hook 'dired-mode-hook 'context-menu-mode)
 
 ;; lisp userdir - required for elpaca
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(add-to-list
+ 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Immediately load elpaca and use-package
 (require 'init-elpaca)
 
 ;; Misc emacs options, mostly self explanatory
-(use-package emacs
+(use-package
+ emacs
  ;; Revert the GC hack from early-init.el to minimize startup time
- :hook (emacs-startup . (lambda () (setq gc-cons-threshold (* 8 1024 1024))))
+ :hook
+ (emacs-startup
+  . (lambda () (setq gc-cons-threshold (* 8 1024 1024))))
  :custom
  (tab-always-indent 'complete)
  (completion-cycle-threshold 3)
@@ -48,11 +52,12 @@
        `((".*" "~/.config/emacs/saves/" t)))
  (unless (file-exists-p "~/.config/emacs/backups")
    (make-directory "~/.config/emacs/backups"))
-(unless (file-exists-p "~/.config/emacs/saves")
-  (make-directory "~/.config/emacs/saves"))
- 
-(setq backup-by-copying t)
-(setq delete-old-versions t
+ (unless (file-exists-p "~/.config/emacs/saves")
+   (make-directory "~/.config/emacs/saves"))
+
+ (setq backup-by-copying t)
+ (setq
+  delete-old-versions t
   kept-new-versions 6
   kept-old-versions 2
   version-control t)
@@ -92,17 +97,17 @@
  ;; Enhanced world clock
  (setq world-clock-list
        '(("America/Vancouver" "Pacific Time")
-        ("America/Edmonton" "Mountain Time")
-        ("America/Detroit" "Eastern Time")
-        ("Europe/Paris" "France")
-        ("Asia/Kolkata" "India")
-        ("Asia/Tokyo" "Japan")))
+         ("America/Edmonton" "Mountain Time")
+         ("America/Detroit" "Eastern Time")
+         ("Europe/Paris" "France")
+         ("Asia/Kolkata" "India")
+         ("Asia/Tokyo" "Japan")))
 
  ;; Massively increase undo limits (default is 0.15mb)
-(setq undo-limit 67108864) ; 64mb.
-(setq undo-strong-limit 100663296) ; 96mb.
-(setq undo-outer-limit 1006632960) ; 960mb.
- 
+ (setq undo-limit 67108864) ; 64mb.
+ (setq undo-strong-limit 100663296) ; 96mb.
+ (setq undo-outer-limit 1006632960) ; 960mb.
+
  ;; Line numbers by default in programming modes
  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
  ;; F7 to toggle line number display globally

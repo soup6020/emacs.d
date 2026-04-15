@@ -21,4 +21,4 @@
   '(projectile-remove-known-project :which-key "remove project"))
  :init (projectile-mode +1))
 
-(provide `init-projectile)
+(provide 'init-projectile)

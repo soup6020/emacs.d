@@ -13,13 +13,17 @@
   :ensure t
   :defer t)
 
+(use-package track-changes
+  :ensure t
+  :defer t)
+
 (use-package project
   :ensure t
   :defer t)
 
 (use-package eglot
   :ensure t
-  :after (eldoc jsonrpc)
+  :after (eldoc jsonrpc track-changes)
   :demand t)
 
 ;(use-package eglot-booster
