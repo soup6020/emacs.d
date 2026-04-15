@@ -100,7 +100,7 @@
   "aa"
   '(consult-org-agenda :which-key "consult agenda picker")
   "at"
-  '(todo-open-soup6020 :which-key "open irl and it todo files")
+  '(soup6020/todo-open :which-key "open irl and it todo files")
 
   ;;Treemacs
   "k"

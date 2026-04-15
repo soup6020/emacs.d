@@ -154,7 +154,7 @@
 (require 'init-magit)
 (require 'init-tramp)
 (require 'init-pdf)
-;; Dashboard
-(require 'init-dashboard)
 ;; Site functions (custom commands)
 (require 'site-functions)
+;; Dashboard
+(require 'init-dashboard)
