@@ -4,9 +4,6 @@
  (setq
   dired-listing-switches
   "-l --almost-all --human-readable --group-directories-first --no-group")
- ;; this command is useful when you want to close the window of `dirvish-side'
- ;; automatically when opening a file
- (setq tab-bar-new-tab-choice '("dired" ".*" (tab-new-buffer-with-name (buffer-name)) nil nil))
  (put 'dired-find-alternate-file 'disabled nil))
 
 (use-package dirvish

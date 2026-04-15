@@ -92,7 +92,9 @@
  (add-to-list 'default-frame-alist '(ns-appearance . light))
  (setq ns-use-proxy-icon nil)
  (setq frame-title-format nil)
- (setq tab-bar-new-tab-choice "*scratch*")
+ ;; Open a fresh empty buffer in each new tab
+ (setq tab-bar-new-tab-choice
+       (lambda () (switch-to-buffer (generate-new-buffer "*new*"))))
 
  ;; Enhanced world clock
  (setq world-clock-list
