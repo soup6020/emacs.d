@@ -161,6 +161,7 @@
 (require 'init-magit)
 (require 'init-tramp)
 (require 'init-pdf)
+(require 'init-elfeed)
 ;; Site functions (custom commands)
 (require 'site-functions)
 ;; Dashboard
