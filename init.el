@@ -44,7 +44,9 @@
  (defun display-startup-echo-area-message ()
    (message ""))
 
- (defalias 'yes-or-no-p 'y-or-n-p)
+ (if (boundp 'use-short-answers)
+     (setopt use-short-answers t)
+   (fset 'yes-or-no-p 'y-or-n-p))
 
  ;; Hide pesky backup files
  (setq backup-directory-alist `(("." . "~/.config/emacs/backups")))
@@ -110,6 +112,20 @@
  (setq undo-strong-limit 100663296) ; 96mb.
  (setq undo-outer-limit 1006632960) ; 960mb.
 
+ ;; Minor optimizations and stolen tweaks https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/
+ ;; Disable Bidirectional Text Scanning
+ (setq-default
+  bidi-display-reordering 'left-to-right
+  bidi-paragraph-direction 'left-to-right)
+ (setq bidi-inhibit-bpa t)
+ ;; Increase Process Output Buffer for LSP
+ (setq read-process-output-max (* 4 1024 1024)) ; 4MB
+ ;; Do not save duplicate entries into clipboard
+ (setq kill-do-not-save-duplicates t)
+ ;; Proportional Window Resizing
+ (setq window-combination-resize t)
+
+
  ;; Line numbers by default in programming modes
  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
  ;; F7 to toggle line number display globally
@@ -157,6 +173,7 @@
 (require 'init-term)
 (require 'init-treemacs)
 (require 'init-projectile)
+(require 'init-rg)
 (require 'init-dirvish)
 (require 'init-magit)
 (require 'init-tramp)
