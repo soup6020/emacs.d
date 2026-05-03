@@ -13,4 +13,9 @@
   (other-window 1)
   (find-file todo-work))
 
+(defun soup6020/indent-buffer ()
+  "Indent the entire buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
 (provide 'site-functions)

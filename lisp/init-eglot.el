@@ -22,10 +22,10 @@
                             (eglot-inlay-hints-mode -1)
                             (flymake-mode -1)))))
 
-(use-package eglot-booster
-  :ensure (:host github :repo "jdtsmith/eglot-booster")
-  :after eglot
-  :demand t
-  :config (eglot-booster-mode))
+;; (use-package eglot-booster
+;   :ensure (:host github :repo "jdtsmith/eglot-booster")
+;;  :after eglot
+;;  :demand t
+;;  :config (eglot-booster-mode))
 
 (provide 'init-eglot)
