@@ -76,12 +76,7 @@
  (prefer-coding-system 'utf-8)
  (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
 
- ;; Scroll one line at a time
- (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
- (setq mouse-wheel-follow-mouse 't)
- (setq mouse-wheel-progressive-speed nil)
-
- (setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
  (setq-default tab-width 2)
  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -140,6 +135,14 @@
 ;; This doesn't really work, but try before package declarations anyway
 (use-package no-littering :ensure t :demand t)
 
+;; Smooth scrolling
+(use-package ultra-scroll
+  :ensure (:host github :repo "jdtsmith/ultra-scroll")
+  :init
+  (setq scroll-conservatively 3
+        scroll-margin 0)
+  :config (ultra-scroll-mode 1))
+
 ;;; Load some packages
 ;;; Inspired by purcell's config
 
@@ -159,6 +162,7 @@
 (require 'init-eglot)
 (require 'init-treesit)
 (require 'init-flymake)
+(require 'init-apheleia)
 ;; Languages and major modes
 (require 'init-nix)
 (require 'init-markdown)
