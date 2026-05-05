@@ -81,10 +81,14 @@
  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
  ;; Cosmetics
- (set-face-attribute 'default nil
-                     ;; :font "ZedMono Nerd Font Mono"
-                     :font "Lilex Nerd Font Mono"
-                     :height 120)
+(set-face-attribute 'default nil
+                    ;; Conditionally set font settings, specify a bunch of OLED stuff on pgtk because Emacs happily ignores fontconfig.
+                    ;; Fall back to basic font otherwise
+                    :font (cond
+                           ((eq window-system 'x) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
+                           ((eq window-system 'pgtk) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
+                           (t "Lilex Nerd Font Mono"))
+                    :height 120)
  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
  (add-to-list 'default-frame-alist '(ns-appearance . light))
  (setq ns-use-proxy-icon nil)
@@ -183,6 +187,9 @@
 (require 'init-tramp)
 (require 'init-pdf)
 (require 'init-elfeed)
+(require 'init-rmsbolt)
+(require 'init-nhexl)
+(require 'init-calfw)
 ;; Site functions (custom commands)
 (require 'site-functions)
 ;; Dashboard

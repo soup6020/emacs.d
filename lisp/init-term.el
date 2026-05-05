@@ -19,8 +19,15 @@
 
 (use-package ghostel
   :ensure (:host github :repo "dakra/ghostel"
-           :files ("lisp/*.el"
-                   ("terminfo/x" "etc/terminfo/x/*")
-                   ("terminfo/78" "etc/terminfo/78/*"))))
+                 :files ("lisp/*.el"
+                         ("terminfo/x" "etc/terminfo/x/*")
+                         ("terminfo/78" "etc/terminfo/78/*")))
+  :general (leader-keys "'" '(ghostel :which-key "ghostel")))
+
+(use-package evil-ghostel
+  :ensure (:host github :repo "dakra/ghostel"
+                 :files ("extensions/evil-ghostel/*.el"))
+  :after (ghostel evil)
+  :hook (ghostel-mode . evil-ghostel-mode))
 
 (provide 'init-term)
