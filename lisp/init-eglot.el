@@ -20,7 +20,7 @@
   (eglot-managed-mode . (lambda ()
                           (unless (display-graphic-p)
                             (eglot-inlay-hints-mode -1)
-                            (flymake-mode -1)))))
+                            (flycheck-mode -1)))))
 
 ;; (use-package eglot-booster
 ;   :ensure (:host github :repo "jdtsmith/eglot-booster")

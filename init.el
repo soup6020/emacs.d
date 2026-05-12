@@ -82,13 +82,16 @@
 
  ;; Cosmetics
 (set-face-attribute 'default nil
-                    ;; Conditionally set font settings, specify a bunch of OLED stuff on pgtk because Emacs happily ignores fontconfig.
-                    ;; Fall back to basic font otherwise
-                    :font (cond
-                           ((eq window-system 'x) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
-                           ((eq window-system 'pgtk) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
-                           (t "Lilex Nerd Font Mono"))
-                    :height 120)
+;;                    ;; Conditionally set font settings, specify a bunch of OLED stuff on pgtk because Emacs happily ignores fontconfig.
+;;                    ;; Fall back to basic font otherwise
+;;                    :font (cond
+;;                           ((eq window-system 'x) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
+;;                           ((eq window-system 'pgtk) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
+;;                           (t "Lilex Nerd Font Mono"))
+;;                    :height 120)
+ :font "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none"
+ :height 120)
+ 
  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
  (add-to-list 'default-frame-alist '(ns-appearance . light))
  (setq ns-use-proxy-icon nil)
@@ -165,7 +168,7 @@
 ;; Language feature support
 (require 'init-eglot)
 (require 'init-treesit)
-(require 'init-flymake)
+(require 'init-flycheck)
 (require 'init-apheleia)
 ;; Languages and major modes
 (require 'init-nix)
