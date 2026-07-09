@@ -1,3 +1,4 @@
+;;; early-init.el --- -*- lexical-binding: t; -*-
 ;;; Gotta go fast!
 ;;; Unset by a hook in init.el after elpaca is loaded
 (setq gc-cons-threshold most-positive-fixnum)

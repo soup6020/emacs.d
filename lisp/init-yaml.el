@@ -1,3 +1,4 @@
+;;; init-yaml.el --- -*- lexical-binding: t; -*-
 ;; YAML
 (use-package
  yaml-mode

@@ -1,3 +1,4 @@
+;;; init-dirvish.el --- -*- lexical-binding: t; -*-
 ;; Dirvish
 (use-package dired
  :config

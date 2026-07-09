@@ -1,3 +1,4 @@
+;;; init-nushell.el --- -*- lexical-binding: t; -*-
 (use-package nushell-mode
   :ensure (:host github :repo "mrkkrp/nushell-mode"))
 

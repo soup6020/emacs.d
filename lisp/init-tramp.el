@@ -1,3 +1,4 @@
+;;; init-tramp.el --- -*- lexical-binding: t; -*-
 ;; Make TRAMP go brrr
 (setq
  remote-file-name-inhibit-locks t

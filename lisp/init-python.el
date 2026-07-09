@@ -1,3 +1,4 @@
+;;; init-python.el --- -*- lexical-binding: t; -*-
 ;; Python
 (use-package python-mode
  :ensure t

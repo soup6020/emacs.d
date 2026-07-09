@@ -1,3 +1,4 @@
+;;; init-markdown.el --- -*- lexical-binding: t; -*-
 ;; Markdown
 (use-package markdown-mode
  :ensure t

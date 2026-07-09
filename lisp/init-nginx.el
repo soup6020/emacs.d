@@ -1,3 +1,4 @@
+;;; init-nginx.el --- -*- lexical-binding: t; -*-
 (use-package nginx-mode
   :ensure t
   :defer t

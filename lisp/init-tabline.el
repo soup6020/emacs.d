@@ -1,3 +1,4 @@
+;;; init-tabline.el --- -*- lexical-binding: t; -*-
 (use-package centaur-tabs
   :ensure t
   :demand t

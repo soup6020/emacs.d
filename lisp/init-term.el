@@ -1,3 +1,4 @@
+;;; init-term.el --- -*- lexical-binding: t; -*-
 (use-package vterm
   :ensure t)
 (use-package vterm-toggle

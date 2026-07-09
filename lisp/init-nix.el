@@ -1,3 +1,4 @@
+;;; init-nix.el --- -*- lexical-binding: t; -*-
 ;; Nix
 (use-package nix-ts-mode
   :ensure t

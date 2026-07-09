@@ -1,3 +1,4 @@
+;;; init-projectile.el --- -*- lexical-binding: t; -*-
 (use-package projectile
  :ensure t
  :demand t

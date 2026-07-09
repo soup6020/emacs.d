@@ -1,3 +1,4 @@
+;;; init-magit.el --- -*- lexical-binding: t; -*-
 (use-package transient :ensure t)
 
 (use-package magit

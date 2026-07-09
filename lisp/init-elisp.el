@@ -1,3 +1,4 @@
+;;; init-elisp.el --- -*- lexical-binding: t; -*-
 (use-package sly
   :ensure t)
 

@@ -1,3 +1,4 @@
+;;; init-eglot.el --- -*- lexical-binding: t; -*-
 ;; Emacs 30 ships recent enough eldoc/jsonrpc/track-changes for ELPA eglot,
 ;; so we use the built-ins.
 

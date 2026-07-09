@@ -1,3 +1,4 @@
+;;; site-functions.el --- -*- lexical-binding: t; -*-
 (defvar todo-irl "~/org/todo/todo-irl.org")
 (defvar todo-it "~/org/todo/todo-it.org")
 (defvar todo-work "~/org/school/work.org")

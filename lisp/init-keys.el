@@ -1,3 +1,4 @@
+;;; init-keys.el --- -*- lexical-binding: t; -*-
 (use-package which-key
  :ensure t
  :demand t

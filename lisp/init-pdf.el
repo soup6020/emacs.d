@@ -1,3 +1,4 @@
+;;; init-pdf.el --- -*- lexical-binding: t; -*-
 ;; PDF
 (use-package pdf-tools
   :ensure t

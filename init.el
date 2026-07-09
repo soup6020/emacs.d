@@ -1,3 +1,4 @@
+;;; init.el --- -*- lexical-binding: t; -*-
 ;; Unset vendor-specific emacs config (default.el)
 (setq inhibit-default-init t)
 
@@ -27,117 +28,117 @@
 
 ;; Misc emacs options, mostly self explanatory
 (use-package
- emacs
- ;; Revert the GC hack from early-init.el to minimize startup time
- :hook
- (emacs-startup
-  . (lambda () (setq gc-cons-threshold (* 8 1024 1024))))
- :custom
- (tab-always-indent 'complete)
- (completion-cycle-threshold 3)
- (text-mode-ispell-word-completion nil)
- (read-extended-command-predicate
-  #'command-completion-default-include-p)
+  emacs
+  ;; Revert the GC hack from early-init.el to minimize startup time
+  :hook
+  (emacs-startup
+   . (lambda () (setq gc-cons-threshold (* 8 1024 1024))))
+  :custom
+  (tab-always-indent 'complete)
+  (completion-cycle-threshold 3)
+  (text-mode-ispell-word-completion nil)
+  (read-extended-command-predicate
+   #'command-completion-default-include-p)
 
- :init
- (setq initial-scratch-message nil)
- (defun display-startup-echo-area-message ()
-   (message ""))
+  :init
+  (setq initial-scratch-message nil)
+  (defun display-startup-echo-area-message ()
+    (message ""))
 
- (if (boundp 'use-short-answers)
-     (setopt use-short-answers t)
-   (fset 'yes-or-no-p 'y-or-n-p))
+  (if (boundp 'use-short-answers)
+      (setopt use-short-answers t)
+    (fset 'yes-or-no-p 'y-or-n-p))
 
- ;; Hide pesky backup files
- (setq backup-directory-alist `(("." . "~/.config/emacs/backups")))
- (setq auto-save-file-name-transforms
-       `((".*" "~/.config/emacs/saves/" t)))
- (unless (file-exists-p "~/.config/emacs/backups")
-   (make-directory "~/.config/emacs/backups"))
- (unless (file-exists-p "~/.config/emacs/saves")
-   (make-directory "~/.config/emacs/saves"))
+  ;; Hide pesky backup files
+  (setq backup-directory-alist `(("." . "~/.config/emacs/backups")))
+  (setq auto-save-file-name-transforms
+        `((".*" "~/.config/emacs/saves/" t)))
+  (unless (file-exists-p "~/.config/emacs/backups")
+    (make-directory "~/.config/emacs/backups"))
+  (unless (file-exists-p "~/.config/emacs/saves")
+    (make-directory "~/.config/emacs/saves"))
 
- (setq backup-by-copying t)
- (setq
-  delete-old-versions t
-  kept-new-versions 6
-  kept-old-versions 2
-  version-control t)
+  (setq backup-by-copying t)
+  (setq
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)
 
- ;; UTF-8 always and everywhere
- (set-charset-priority 'unicode)
- (setq
-  locale-coding-system 'utf-8
-  coding-system-for-read 'utf-8
-  coding-system-for-write 'utf-8)
- (set-terminal-coding-system 'utf-8)
- (set-keyboard-coding-system 'utf-8)
- (set-selection-coding-system 'utf-8)
- (prefer-coding-system 'utf-8)
- (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+  ;; UTF-8 always and everywhere
+  (set-charset-priority 'unicode)
+  (setq
+   locale-coding-system 'utf-8
+   coding-system-for-read 'utf-8
+   coding-system-for-write 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (set-selection-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
+  (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
 
-(setq-default indent-tabs-mode nil)
- (setq-default tab-width 2)
- (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 2)
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
- ;; Cosmetics
-(set-face-attribute 'default nil
-;;                    ;; Conditionally set font settings, specify a bunch of OLED stuff on pgtk because Emacs happily ignores fontconfig.
-;;                    ;; Fall back to basic font otherwise
-;;                    :font (cond
-;;                           ((eq window-system 'x) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
-;;                           ((eq window-system 'pgtk) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
-;;                           (t "Lilex Nerd Font Mono"))
-;;                    :height 120)
- :font "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none"
- :height 120)
- 
- (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
- (add-to-list 'default-frame-alist '(ns-appearance . light))
- (setq ns-use-proxy-icon nil)
- (setq frame-title-format nil)
- ;; Open a fresh empty buffer in each new tab
- (setq tab-bar-new-tab-choice
-       (lambda () (switch-to-buffer (generate-new-buffer "*new*"))))
+  ;; Cosmetics
+  (set-face-attribute 'default nil
+                      ;;                    ;; Conditionally set font settings, specify a bunch of OLED stuff on pgtk because Emacs happily ignores fontconfig.
+                      ;;                    ;; Fall back to basic font otherwise
+                      ;;                    :font (cond
+                      ;;                           ((eq window-system 'x) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
+                      ;;                           ((eq window-system 'pgtk) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
+                      ;;                           (t "Lilex Nerd Font Mono"))
+                      ;;                    :height 120)
+                      :font "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none"
+                      :height 120)
+  
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist '(ns-appearance . light))
+  (setq ns-use-proxy-icon nil)
+  (setq frame-title-format nil)
+  ;; Open a fresh empty buffer in each new tab
+  (setq tab-bar-new-tab-choice
+        (lambda () (switch-to-buffer (generate-new-buffer "*new*"))))
 
- ;; Enhanced world clock
- (setq world-clock-list
-       '(("America/Vancouver" "Pacific Time")
-         ("America/Edmonton" "Mountain Time")
-         ("America/Detroit" "Eastern Time")
-         ("Europe/Paris" "France")
-         ("Asia/Kolkata" "India")
-         ("Asia/Tokyo" "Japan")))
+  ;; Enhanced world clock
+  (setq world-clock-list
+        '(("America/Vancouver" "Pacific Time")
+          ("America/Edmonton" "Mountain Time")
+          ("America/Detroit" "Eastern Time")
+          ("Europe/Paris" "France")
+          ("Asia/Kolkata" "India")
+          ("Asia/Tokyo" "Japan")))
 
- ;; Massively increase undo limits (default is 0.15mb)
- (setq undo-limit 67108864) ; 64mb.
- (setq undo-strong-limit 100663296) ; 96mb.
- (setq undo-outer-limit 1006632960) ; 960mb.
+  ;; Massively increase undo limits (default is 0.15mb)
+  (setq undo-limit 67108864) ; 64mb.
+  (setq undo-strong-limit 100663296) ; 96mb.
+  (setq undo-outer-limit 1006632960) ; 960mb.
 
- ;; Minor optimizations and stolen tweaks https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/
- ;; Disable Bidirectional Text Scanning
- (setq-default
-  bidi-display-reordering 'left-to-right
-  bidi-paragraph-direction 'left-to-right)
- (setq bidi-inhibit-bpa t)
- ;; Increase Process Output Buffer for LSP
- (setq read-process-output-max (* 4 1024 1024)) ; 4MB
- ;; Do not save duplicate entries into clipboard
- (setq kill-do-not-save-duplicates t)
- ;; Proportional Window Resizing
- (setq window-combination-resize t)
+  ;; Minor optimizations and stolen tweaks https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/
+  ;; Disable Bidirectional Text Scanning
+  (setq-default
+   bidi-display-reordering 'left-to-right
+   bidi-paragraph-direction 'left-to-right)
+  (setq bidi-inhibit-bpa t)
+  ;; Increase Process Output Buffer for LSP
+  (setq read-process-output-max (* 4 1024 1024)) ; 4MB
+  ;; Do not save duplicate entries into clipboard
+  (setq kill-do-not-save-duplicates t)
+  ;; Proportional Window Resizing
+  (setq window-combination-resize t)
 
 
- ;; Line numbers by default in programming modes
- (add-hook 'prog-mode-hook 'display-line-numbers-mode)
- ;; F7 to toggle line number display globally
- (defun prot/toggle-line-numbers ()
-   "Toggles the display of line numbers.  Applies to all buffers."
-   (interactive)
-   (if (bound-and-true-p display-line-numbers-mode)
-       (display-line-numbers-mode -1)
-     (display-line-numbers-mode)))
- :bind (("<f7>" . prot/toggle-line-numbers)))
+  ;; Line numbers by default in programming modes
+  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+  ;; F7 to toggle line number display globally
+  (defun prot/toggle-line-numbers ()
+    "Toggles the display of line numbers.  Applies to all buffers."
+    (interactive)
+    (if (bound-and-true-p display-line-numbers-mode)
+        (display-line-numbers-mode -1)
+      (display-line-numbers-mode)))
+  :bind (("<f7>" . prot/toggle-line-numbers)))
 
 ;; This doesn't really work, but try before package declarations anyway
 (use-package no-littering :ensure t :demand t)
@@ -197,3 +198,17 @@
 (require 'site-functions)
 ;; Dashboard
 (require 'init-dashboard)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("7ec8fd456c0c117c99e3a3b16aaf09ed3fb91879f6601b1ea0eeaee9c6def5d9"
+     default)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

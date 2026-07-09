@@ -1,3 +1,4 @@
+;;; init-modeline.el --- -*- lexical-binding: t; -*-
 ;; Doom modeline
 (use-package doom-modeline
  :ensure t

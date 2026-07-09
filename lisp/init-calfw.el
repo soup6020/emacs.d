@@ -1,3 +1,4 @@
+;;; init-calfw.el --- -*- lexical-binding: t; -*-
 (use-package calfw
   :ensure t)
 

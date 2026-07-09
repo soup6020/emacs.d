@@ -1,3 +1,4 @@
+;;; init-rust.el --- -*- lexical-binding: t; -*-
 ;; Rust
 (use-package rust-mode
  :ensure t

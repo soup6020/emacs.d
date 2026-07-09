@@ -1,3 +1,4 @@
+;;; init-rg.el --- -*- lexical-binding: t; -*-
 (use-package rg
  :ensure t
  :defer t

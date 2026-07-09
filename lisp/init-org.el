@@ -1,3 +1,4 @@
+;;; init-org.el --- -*- lexical-binding: t; -*-
 ;; org stuff
 (use-package org
  :ensure (:wait t)

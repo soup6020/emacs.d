@@ -1,3 +1,4 @@
+;;; init-elfeed.el --- -*- lexical-binding: t; -*-
 (use-package elfeed
  :ensure t
  :general

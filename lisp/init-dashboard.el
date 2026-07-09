@@ -1,3 +1,4 @@
+;;; init-dashboard.el --- -*- lexical-binding: t; -*-
 ;; use-package with Elpaca:
 (use-package dashboard
   :ensure t

@@ -1,3 +1,4 @@
+;;; init-completion.el --- -*- lexical-binding: t; -*-
 (use-package vertico
  :ensure t
  :init (vertico-mode 1)

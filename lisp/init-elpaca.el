@@ -1,4 +1,14 @@
+;;; init-elpaca.el --- -*- lexical-binding: t; -*-
 ;; Set up elpaca
+;; On Nix builds `emacs-build-time' is nil, so Elpaca can't detect the core date
+;; and warns.  Pin it ourselves (defvar wins over Elpaca's later one).  This is a
+;; development build of Emacs 31, whose built-in packages track master, so the
+;; fallback is a recent date.
+(defvar elpaca-core-date
+  (list (or (and emacs-build-time
+                 (> (string-to-number (format-time-string "%Y" emacs-build-time)) 2000)
+                 (string-to-number (format-time-string "%Y%m%d" emacs-build-time)))
+            20260101)))
 (defvar elpaca-installer-version 0.12)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
