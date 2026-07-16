@@ -1,13 +1,14 @@
 I'm a recent Neovim convert, this is my Emacs config.
-There isn't much at the moment, but the config works
-You can use it like this:
+I make no statements on how well this is set up, if you dig you're likely to find some jank. This is made for me and not really anybody else.
+The configuration can be deployed like this:
 #+BEGIN_SRC bash
 git clone https://github.com/soup6020/emacs.d ~/.config/emacs
 #+END_SRC
-* Notable Packages:
+After that you just need to open emacs however you prefer (GUI, emacsclient, emacs -nw, etc) and elpaca should start fetching everything.
+* Notable Packages/Functionality:
 + Elpaca: Package manager
 + Vertico/Marginalia/Orderless: Completions
 + Consult/Embark: Supplementary commands and menus
-+ evil-mode: Vi emulation
-+ Eglot: LSP mode
++ evil/meow: Modal input (keybind to toggle between the two, defaults to evil)
++ eglot/flymake/apheleia: IDE features (LSPs, syntax checking, code formatting)
 + org-mode/org-modern/org-roam: org-mode ecosystem stuff

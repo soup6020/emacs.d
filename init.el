@@ -156,9 +156,11 @@
 
 ;; Cosmetics
 (require 'init-themes)
+(require 'init-prism)
 ;; Input
 (require 'init-evil)
 (require 'init-keys)
+(require 'init-meow)
 ;; Function
 (require 'init-modeline)
 ;; Turned off for now because it does weird things
@@ -169,7 +171,7 @@
 ;; Language feature support
 (require 'init-eglot)
 (require 'init-treesit)
-(require 'init-flycheck)
+(require 'init-flymake)
 (require 'init-apheleia)
 ;; Languages and major modes
 (require 'init-nix)
