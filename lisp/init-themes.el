@@ -15,7 +15,7 @@
   :ensure t
   :demand t
   :config
-  (load-theme 'ef-night t)
+  ;; (load-theme 'ef-night t)
   )
 
 (use-package tron-legacy-theme
@@ -28,6 +28,7 @@
   :ensure t
   :demand t
   :config
+  ;; Work-around for a weird bug that prevents themes being applied on emacs 30+
   (setcdr (assoc 'gnus-group-news-low-empty doom-themes-base-faces)
           '(:inherit 'gnus-group-mail-1-empty :weight 'normal))
   :custom
@@ -37,7 +38,7 @@
   ;; for treemacs users
   (doom-themes-treemacs-theme "doom-colors") ; use "doom-colors" for less minimal icon theme
   :config
-  ;; (load-theme 'doom-outrun-electric t)
+  (load-theme 'doom-horizon t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
