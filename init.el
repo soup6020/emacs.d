@@ -106,7 +106,6 @@
         '(("America/Vancouver" "Pacific Time")
           ("America/Edmonton" "Mountain Time")
           ("America/Detroit" "Eastern Time")
-          ("Europe/Paris" "France")
           ("Asia/Kolkata" "India")
           ("Asia/Tokyo" "Japan")))
 
@@ -115,7 +114,8 @@
   (setq undo-strong-limit 100663296) ; 96mb.
   (setq undo-outer-limit 1006632960) ; 960mb.
 
-  ;; Minor optimizations and stolen tweaks https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/
+  ;; Minor optimizations and stolen tweaks
+  ;; https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/
   ;; Disable Bidirectional Text Scanning
   (setq-default
    bidi-display-reordering 'left-to-right
@@ -128,6 +128,10 @@
   ;; Proportional Window Resizing
   (setq window-combination-resize t)
 
+  ;; Fix manpage rendering
+  (require 'ansi-osc)
+  (add-hook 'Man-cooked-hook
+            (lambda () (ansi-osc-apply-on-region (point-min) (point-max))))
 
   ;; Line numbers by default in programming modes
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
@@ -138,7 +142,20 @@
     (if (bound-and-true-p display-line-numbers-mode)
         (display-line-numbers-mode -1)
       (display-line-numbers-mode)))
+
+  ;; Confirm before closing frame
+  (defun ask-before-closing ()
+    "Prompt for confirmation before exiting emacsclient."
+    (interactive)
+    (if (y-or-n-p "Really exit this emacsclient? ")
+        (save-buffers-kill-terminal)
+      (message "Canceled exit")))
+
+  (when (daemonp)
+    (global-set-key (kbd "C-x C-c") #'ask-before-closing))
+
   :bind (("<f7>" . prot/toggle-line-numbers)))
+
 
 ;; This doesn't really work, but try before package declarations anyway
 (use-package no-littering :ensure t :demand t)
