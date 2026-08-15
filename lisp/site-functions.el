@@ -1,8 +1,14 @@
 ;;; site-functions.el --- -*- lexical-binding: t; -*-
+
+;; `soup6020/man-foreign' rebinds `manual-program' and `Man-switches'.  Both
+;; must already be declared special or the lexical `let' would shadow them
+;; lexically, and man.el's own defcustoms would then fail to load.
+(require 'man)
+
 (defvar todo-irl "~/org/todo/todo-irl.org")
 (defvar todo-work "~/org/todo/work.org")
 (defvar todo-it "~/org/todo/todo-it.org")
-(defvar todo-school "~/org/school/work.org")
+(defvar todo-school "~/org/school/schoolwork.org")
 
 (defun soup6020/todo-open ()
   "Open primary org todo files in a 2x2 grid."
@@ -18,6 +24,55 @@
               (list todo-irl todo-work todo-it todo-school))
     (balance-windows)
     (select-window tl)))
+
+(defvar soup6020/org-sync-directory "~/org"
+  "Git working tree synced by `soup6020/org-sync'.")
+
+(defun soup6020/org-sync--git (buffer &rest args)
+  "Run git with ARGS in `default-directory', logging to BUFFER.
+Return the exit status."
+  (with-current-buffer buffer
+    (let ((inhibit-read-only t))
+      (goto-char (point-max))
+      (insert "$ git " (mapconcat #'identity args " ") "\n")
+      (prog1 (apply #'call-process "git" nil t nil args)
+        (insert "\n")))))
+
+(defun soup6020/org-sync ()
+  "Stage, commit, and push everything under `soup6020/org-sync-directory'.
+The commit is titled \"org sync\" and is pushed to origin/main.  Git
+output is collected in *org-sync*, which pops up if any step fails."
+  (interactive)
+  (let ((default-directory (expand-file-name soup6020/org-sync-directory))
+        (buffer (get-buffer-create "*org-sync*")))
+    (unless (file-directory-p default-directory)
+      (user-error "org sync: no such directory: %s" default-directory))
+    (with-current-buffer buffer
+      (let ((inhibit-read-only t)) (erase-buffer))
+      (special-mode))
+    ;; Unsaved buffers would otherwise be committed at their on-disk contents.
+    (save-some-buffers t (lambda ()
+                           (and buffer-file-name
+                                (file-in-directory-p buffer-file-name
+                                                     default-directory))))
+    (dolist (step '(("add" "-A")
+                    :commit
+                    ("push" "origin" "main")))
+      (pcase step
+        ;; `git diff --cached --quiet' exits 0 precisely when nothing is
+        ;; staged, in which case there is nothing to commit but there may
+        ;; still be earlier commits worth pushing.
+        (:commit
+         (if (zerop (soup6020/org-sync--git buffer "diff" "--cached" "--quiet"))
+             (message "org sync: nothing to commit")
+           (unless (zerop (soup6020/org-sync--git buffer "commit" "-m" "org sync"))
+             (pop-to-buffer buffer)
+             (user-error "org sync: commit failed"))))
+        (args
+         (unless (zerop (apply #'soup6020/org-sync--git buffer args))
+           (pop-to-buffer buffer)
+           (user-error "org sync: git %s failed" (car args))))))
+    (message "org sync: pushed to origin/main")))
 
 (defun soup6020/indent-buffer ()
   "Indent the entire buffer."
@@ -57,5 +112,38 @@
   (let ((manual-program (concat "man-" system))
         (Man-switches ""))
     (man topic)))
+
+(defvar soup6020/9front-man-root "~/Documents/man/9front/sys/man")
+
+(defun soup6020/9front-man-table ()
+  "Return an alist of \"page(section)\" strings to file paths."
+  (let (cands)
+    (dolist (dir (directory-files (expand-file-name soup6020/9front-man-root) t "\\`[0-9]+\\'"))
+      (dolist (f (directory-files dir t directory-files-no-dot-files-regexp))
+        (unless (file-directory-p f)
+          (push (cons (format "%s(%s)" (file-name-nondirectory f)
+                              (file-name-nondirectory dir))
+                      f)
+                cands))))
+    (nreverse cands)))
+
+(defun soup6020/9front-man (file)
+  "Display FILE, a page from a local copy of the 9front manual."
+  (interactive
+   (let ((table (soup6020/9front-man-table)))
+     (list (cdr (assoc (completing-read "9front page: " table nil t) table)))))
+  (let ((buf (get-buffer-create (format "*9man %s*" (file-name-nondirectory file)))))
+    (with-current-buffer buf
+      (let ((inhibit-read-only t))
+        (erase-buffer)
+        (call-process "man-9front" nil t nil file)
+        (goto-char (point-min)))
+      (special-mode))
+    (pop-to-buffer buf)))
+
+(defun soup6020/9front-man-online (page section)
+  "Browse PAGE in SECTION of the 9front manual with `eww'."
+  (interactive "sPage: \nsSection: ")
+  (eww (format "http://man.9front.org/%s/%s" section page)))
 
 (provide 'site-functions)

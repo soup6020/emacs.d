@@ -163,6 +163,9 @@
 ;; Smooth scrolling
 (use-package ultra-scroll
   :ensure (:host github :repo "jdtsmith/ultra-scroll")
+  ;; `use-package-always-defer' is t, and nothing autoloads this package, so
+  ;; without :demand the :config below would never run.
+  :demand t
   :init
   (setq scroll-conservatively 3
         scroll-margin 0)
@@ -191,6 +194,7 @@
 (require 'init-flymake)
 (require 'init-apheleia)
 ;; Languages and major modes
+(require 'init-c)
 (require 'init-nix)
 (require 'init-markdown)
 (require 'init-elisp)
