@@ -77,7 +77,7 @@ built-in icons `unless' one is already registered."
     ;; overwrite the font family the glyph needs to render at all.  Passing
     ;; :face here instead adds an :inherit alongside the family.
     (define-icon tab-bar-new nil
-      `((text ,(concat " " (nerd-icons-mdicon "nf-md-plus_circle"
+      `((text ,(concat " " (nerd-icons-mdicon "nf-md-plus_thick"
                                               :face 'soup6020/tab-bar-button)
                        " ")))
       "Icon for creating a new tab."
@@ -87,7 +87,7 @@ built-in icons `unless' one is already registered."
     ;; `tab-bar-tab' or `tab-bar-tab-inactive' appended, so it is legible
     ;; already and needs no face of its own.
     (define-icon tab-bar-close nil
-      `((text ,(concat " " (nerd-icons-mdicon "nf-md-close_circle"))))
+      `((text ,(concat " " (nerd-icons-mdicon "nf-md-close_thick"))))
       "Icon for closing the clicked tab."
       :version "29.1"
       :help-echo "Click to close tab")
