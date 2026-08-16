@@ -2,7 +2,12 @@
 ;; Install themes
 
 (use-package nerd-icons
-  :ensure t)
+  :ensure t
+  :config
+  ;; The default "Symbols Nerd Font Mono" is not installed here.  Our default
+  ;; font is itself a patched Nerd Font and carries the same glyphs, so point
+  ;; nerd-icons at it rather than relying on font fallback to find them.
+  (setopt nerd-icons-font-family "Lilex Nerd Font Mono"))
 
 (use-package kanagawa-themes
   :ensure t
