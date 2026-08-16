@@ -38,6 +38,9 @@
   (text-mode-ispell-word-completion nil)
   (read-extended-command-predicate
    #'command-completion-default-include-p)
+  ;; Emacs 31+ tree-sitter stuff
+  (treesit-auto-install-grammar 'always)
+  (treesit-enabled-modes t)
 
   :init
   (setq initial-scratch-message nil)
@@ -188,7 +191,6 @@
 (require 'init-org)
 ;; Language feature support
 (require 'init-eglot)
-(require 'init-treesit)
 (require 'init-flymake)
 (require 'init-apheleia)
 ;; Languages and major modes
@@ -219,17 +221,3 @@
 (require 'site-functions)
 ;; Dashboard
 (require 'init-dashboard)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("7ec8fd456c0c117c99e3a3b16aaf09ed3fb91879f6601b1ea0eeaee9c6def5d9"
-     default)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

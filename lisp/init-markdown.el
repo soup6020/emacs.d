@@ -1,15 +1,10 @@
 ;;; init-markdown.el --- -*- lexical-binding: t; -*-
 ;; Markdown
-(use-package markdown-mode
- :ensure t
- :defer t
- :config (setq markdown-fontify-code-blocks-natively t))
-
 (use-package markdown-ts-mode
-  :ensure t
-  :after treesit-auto
+  :ensure nil ; built-in for Emacs 31+
   :mode ("\\.md\\'" . markdown-ts-mode)
-  :defer 't
+  :defer t
+  :hook ((markdown-ts-mode	. eglot-ensure))
   :config
   )
 
