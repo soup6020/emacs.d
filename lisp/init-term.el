@@ -1,11 +1,4 @@
 ;;; init-term.el --- -*- lexical-binding: t; -*-
-(use-package vterm
-  :ensure t)
-(use-package vterm-toggle
-  :ensure t
-  :defer t
-  :general (leader-keys "'" '(vterm-toggle :which-key "terminal")))
-
 ;; Kitty keyboard protocol support
 (use-package kkp
   :ensure t

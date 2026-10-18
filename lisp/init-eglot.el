@@ -14,6 +14,8 @@
   ;; lines in a TUI; disable that capability in terminal frames.
   (eglot-ignored-server-capabilities
    (unless (display-graphic-p) '(:documentHighlightProvider)))
+  (eglot-documentation-renderer 'markdown-ts-view-mode)
+  (eglot-code-action-indications nil)
   :hook
   ;; Overlays that repaint as point moves or as the server pushes updates
   ;; garble lines in a TUI. Disable them in terminal frames only.
@@ -22,11 +24,5 @@
                           (unless (display-graphic-p)
                             (eglot-inlay-hints-mode -1)
                             (flymake-mode -1)))))
-
-;; (use-package eglot-booster
-;   :ensure (:host github :repo "jdtsmith/eglot-booster")
-;;  :after eglot
-;;  :demand t
-;;  :config (eglot-booster-mode))
 
 (provide 'init-eglot)

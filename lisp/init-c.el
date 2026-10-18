@@ -1,12 +1,5 @@
 ;;; init-c.el --- -*- lexical-binding: t; -*-
-;; C and C++ using the tree-sitter modes built in since Emacs 29, with clangd
-;; driven through eglot.
-
-;; `treesit-auto' remaps c-mode and c++-mode, but only buffer-locally and only
-;; for those two.  It has no recipe for `c-or-c++-mode' (what .h files get), and
-;; cc-mode's `c-or-c++-mode' funcalls c-mode/c++-mode directly, bypassing any
-;; remap.  Set all three globally; treesit-auto appends to this value rather
-;; than replacing it, so the two overlapping entries are harmless.
+;; Remap all relevant modes to their tree-sitter equivalents
 (dolist (remap '((c-mode        . c-ts-mode)
                  (c++-mode      . c++-ts-mode)
                  (c-or-c++-mode . c-or-c++-ts-mode)))

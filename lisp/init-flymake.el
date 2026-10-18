@@ -14,4 +14,11 @@
         ("M-p" . flymake-goto-prev-error)
         ("C-c ! l" . flymake-show-buffer-diagnostics)))
 
+(use-package checkdoc
+  :ensure nil
+  :defer t
+  :config
+  ;; Suppress annoying flymake suggestions pertaining to comments
+  (advice-add 'checkdoc-file-comments-engine :around #'my/skip-file-comments-in-config))
+
 (provide 'init-flymake)

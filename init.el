@@ -85,24 +85,26 @@
 
   ;; Cosmetics
   (set-face-attribute 'default nil
-                      ;;                    ;; Conditionally set font settings, specify a bunch of OLED stuff on pgtk because Emacs happily ignores fontconfig.
-                      ;;                    ;; Fall back to basic font otherwise
-                      ;;                    :font (cond
-                      ;;                           ((eq window-system 'x) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
-                      ;;                           ((eq window-system 'pgtk) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
-                      ;;                           (t "Lilex Nerd Font Mono"))
-                      ;;                    :height 120)
+                      ;; Conditionally set font settings, specify a bunch of OLED stuff on pgtk because Emacs happily ignores fontconfig.
+                      ;; Fall back to basic font otherwise
+                      ;; :font (cond
+                      ;;       ((eq window-system 'x) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
+                      ;;       ((eq window-system 'pgtk) "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none")
+                      ;;       (t "Lilex Nerd Font Mono"))
+                      ;; `:height 120)
+                      ;; Actually just set OLED Lilex globally
                       :font "Lilex Nerd Font Mono:antialias=true:hintstyle=hintslight:rgba=none:lcdfilter=none"
                       :height 120)
-  
+
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   (add-to-list 'default-frame-alist '(ns-appearance . light))
   (setq ns-use-proxy-icon nil)
   (setq frame-title-format nil)
   ;; Open a fresh empty buffer in each new tab
-  (setq tab-bar-new-tab-choice
-        (lambda () (switch-to-buffer (generate-new-buffer "*new*"))))
-
+  ;; (setq tab-bar-new-tab-choice
+  ;;       (lambda () (switch-to-buffer (generate-new-buffer "*new*"))))
+  ;; Open the scratch buffer for new tabs
+  (setq tab-bar-new-tab-choice #'scratch-buffer)
   ;; Enhanced world clock
   (setq world-clock-list
         '(("America/Vancouver" "Pacific Time")
@@ -135,8 +137,9 @@
   (add-hook 'Man-cooked-hook
             (lambda () (ansi-osc-apply-on-region (point-min) (point-max))))
 
-  ;; Line numbers by default in programming modes
+  ;; Line numbers by default in programming/conf modes
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+  (add-hook 'conf-mode-hook 'display-line-numbers-mode)
   ;; F7 to toggle line number display globally
   (defun prot/toggle-line-numbers ()
     "Toggles the display of line numbers.  Applies to all buffers."
